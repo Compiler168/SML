@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Theme -->
+    <style name="Theme.SmartLoanAI" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/primary_light</item>
+        <item name="colorPrimaryDark">#0A1929</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
+        <item name="colorSecondary">@color/secondary_light</item>
+        <item name="colorOnPrimary">#0A1929</item>
+        <item name="colorOnSecondary">#0A1929</item>
+        <item name="colorSurface">#1A1A2E</item>
+        <item name="colorError">@color/error</item>
+        <item name="android:windowBackground">#0F0F23</item>
+        <item name="android:statusBarColor">#0A1929</item>
+        <item name="android:navigationBarColor">#1A1A2E</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="Theme.SmartLoanAI.Splash" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:windowBackground">@color/splash_background</item>
+        <item name="android:statusBarColor">@color/splash_background</item>
+        <item name="android:navigationBarColor">@color/splash_background</item>
+    </style>
+</resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Loan AI</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Smart Loan Eligibility</string>
+    <string name="onboarding_desc_1">Get instant AI-powered loan eligibility predictions with personalized suggestions</string>
+    <string name="onboarding_title_2">AI Financial Assistant</string>
+    <string name="onboarding_desc_2">Chat with our intelligent AI about loans, budgeting, savings, and financial planning</string>
+    <string name="onboarding_title_3">Smart Recommendations</string>
+    <string name="onboarding_desc_3">Receive personalized financial advice powered by reinforcement learning</string>
+    <string name="get_started">Get Started</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+
+    <!-- Auth -->
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone">Phone Number</string>
+    <string name="dont_have_account">Don\'t have an account? </string>
+    <string name="already_have_account">Already have an account? </string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="create_account">Create Account</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_loan">Loan Check</string>
+    <string name="nav_chat">AI Chat</string>
+    <string name="nav_budget">Budget</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Loan Form -->
+    <string name="loan_eligibility">Loan Eligibility Check</string>
+    <string name="age">Age</string>
+    <string name="gender">Gender</string>
+    <string name="education">Education</string>
+    <string name="employment_status">Employment Status</string>
+    <string name="annual_income">Annual Income ($)</string>
+    <string name="monthly_expenses">Monthly Expenses ($)</string>
+    <string name="existing_debts">Existing Debts ($)</string>
+    <string name="loan_amount">Loan Amount ($)</string>
+    <string name="loan_term">Loan Term (months)</string>
+    <string name="credit_score">Credit Score</string>
+    <string name="check_eligibility">Check Eligibility</string>
+
+    <!-- Results -->
+    <string name="approved">Approved!</string>
+    <string name="rejected">Rejected</string>
+    <string name="approval_probability">Approval Probability</string>
+    <string name="risk_level">Risk Level</string>
+    <string name="suggestions">Improvement Suggestions</string>
+    <string name="financial_health">Financial Health Score</string>
+
+    <!-- Chatbot -->
+    <string name="chatbot_title">AI Financial Assistant</string>
+    <string name="type_message">Type your message...</string>
+    <string name="send">Send</string>
+
+    <!-- Budget -->
+    <string name="budget_analysis">Budget Analysis</string>
+    <string name="emi_calculator">EMI Calculator</string>
+    <string name="health_score">Financial Health</string>
+    <string name="interest_rate">Interest Rate (%)</string>
+    <string name="calculate">Calculate</string>
+
+    <!-- Profile -->
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
+
+    <!-- General -->
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+</resources>

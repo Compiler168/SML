@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Brand Colors (Modern Fintech Indigo) -->
+    <color name="primary">#4F46E5</color>
+    <color name="primary_dark">#3730A3</color>
+    <color name="primary_light">#818CF8</color>
+    <color name="primary_variant">#312E81</color>
+
+    <!-- Secondary / Accent (Vibrant Cyan/Blue) -->
+    <color name="secondary">#0EA5E9</color>
+    <color name="secondary_dark">#0284C7</color>
+    <color name="secondary_light">#38BDF8</color>
+
+    <!-- Background -->
+    <color name="background">#F8FAFC</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="card_background">#FFFFFF</color>
+
+    <!-- Text -->
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="text_hint">#94A3B8</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <!-- Status Colors -->
+    <color name="success">#4CAF50</color>
+    <color name="success_light">#E8F5E9</color>
+    <color name="warning">#FF9800</color>
+    <color name="warning_light">#FFF3E0</color>
+    <color name="error">#F44336</color>
+    <color name="error_light">#FFEBEE</color>
+    <color name="info">#2196F3</color>
+    <color name="info_light">#E3F2FD</color>
+
+    <!-- Risk Level Colors -->
+    <color name="risk_very_low">#4CAF50</color>
+    <color name="risk_low">#8BC34A</color>
+    <color name="risk_moderate">#FFC107</color>
+    <color name="risk_high">#FF9800</color>
+    <color name="risk_very_high">#F44336</color>
+
+    <!-- Chat -->
+    <color name="chat_user_bubble">#4F46E5</color>
+    <color name="chat_bot_bubble">#F1F5F9</color>
+    <color name="chat_user_text">#FFFFFF</color>
+    <color name="chat_bot_text">#0F172A</color>
+
+    <!-- Gradient -->
+    <color name="gradient_start">#4F46E5</color>
+    <color name="gradient_end">#0EA5E9</color>
+
+    <!-- Splash -->
+    <color name="splash_background">#4F46E5</color>
+
+    <!-- Onboarding -->
+    <color name="onboarding_bg_1">#4F46E5</color>
+    <color name="onboarding_bg_2">#0EA5E9</color>
+    <color name="onboarding_bg_3">#8B5CF6</color>
+    <color name="dot_active">#FFFFFF</color>
+    <color name="dot_inactive">#80FFFFFF</color>
+
+    <!-- Navigation -->
+    <color name="nav_selected">#1A73E8</color>
+    <color name="nav_unselected">#9AA0A6</color>
+
+    <!-- Divider -->
+    <color name="divider">#E0E0E0</color>
+
+    <!-- Overlay -->
+    <color name="overlay">#80000000</color>
+</resources>
