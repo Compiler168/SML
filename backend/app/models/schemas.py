@@ -32,6 +32,7 @@ class UserProfile(BaseModel):
 class UserUpdate(BaseModel):
     name: Optional[str] = None
     phone: Optional[str] = None
+    profile: Optional[dict] = None
 
 class TokenResponse(BaseModel):
     access_token: str

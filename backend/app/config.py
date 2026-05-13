@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = True
     HOST: str = "0.0.0.0"
-    PORT: int = 8000
+    PORT: int = 8080
 
     # JWT
     JWT_SECRET_KEY: str = "smart-loan-ai-secret-key-change-in-production"

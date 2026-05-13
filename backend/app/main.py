@@ -69,12 +69,13 @@ app.add_middleware(
 )
 
 # Include routers
-from routers import auth, loan, chatbot, budget, recommendation, admin, eda
+from routers import auth, loan, chatbot, budget, recommendation, admin, eda, reports
 
 app.include_router(auth.router, prefix="/api/auth", tags=["Authentication"])
-app.include_router(loan.router, prefix="/api/loan", tags=["Loan Prediction"])
-app.include_router(chatbot.router, prefix="/api/chatbot", tags=["AI Chatbot"])
-app.include_router(budget.router, prefix="/api/budget", tags=["Budget Analysis"])
+app.include_router(loan.router, prefix="/api/loans", tags=["Loan Prediction"])
+app.include_router(chatbot.router, prefix="/api/chat", tags=["AI Chatbot"])
+app.include_router(budget.router, prefix="/api/financial", tags=["Financial Analysis"])
+app.include_router(reports.router, prefix="/api/reports", tags=["Reports"])
 app.include_router(recommendation.router, prefix="/api/recommend", tags=["RL Recommendations"])
 app.include_router(admin.router, prefix="/api/admin", tags=["Admin Dashboard"])
 app.include_router(eda.router, prefix="/api/eda", tags=["EDA Reports"])

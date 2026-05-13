@@ -66,7 +66,7 @@ class LoanService:
             approved = probability >= 0.5
 
         # Risk assessment
-        risk_level = compute_risk_category(data['credit_score'])
+        risk_level = compute_risk_category(data.get('credit_score', 650))
         risk_colors = {
             'Very Low Risk': '#4CAF50', 'Low Risk': '#8BC34A',
             'Moderate Risk': '#FFC107', 'High Risk': '#FF9800',
@@ -75,35 +75,101 @@ class LoanService:
 
         # Financial health
         health = compute_financial_health_score(
-            data['annual_income'], data['monthly_expenses'],
-            data['existing_debts'], data['credit_score'],
-            data['loan_amount'], data['loan_term']
+            data.get('annual_income', 0), data.get('monthly_expenses', 0),
+            data.get('existing_debts', 0), data.get('credit_score', 650),
+            data.get('loan_amount', 0), data.get('loan_term', 12)
         )
 
-        # Suggestions
+        monthly_income = data.get('annual_income', 0) / 12
+        monthly_expenses = data.get('monthly_expenses', 0)
+        requested_emi = LoanService._calculate_emi(
+            data.get('loan_amount', 0), data.get('interest_rate', 10.0), data.get('loan_term', 12)
+        )
+        dti_ratio = round(data.get('existing_debts', 0) / max(data.get('annual_income', 1), 1), 4)
+        savings_ratio = round(max(monthly_income - monthly_expenses, 0) / max(monthly_income, 1), 4)
+
         suggestions = generate_improvement_suggestions(
-            data['credit_score'], data['annual_income'],
-            data['monthly_expenses'], data['existing_debts'],
-            data['loan_amount'], data['loan_term'],
-            data['employment_status'], data['education']
+            data.get('credit_score', 650), data.get('annual_income', 0),
+            data.get('monthly_expenses', 0), data.get('existing_debts', 0),
+            data.get('loan_amount', 0), data.get('loan_term', 12),
+            data.get('employment_status', ''), data.get('education', '')
         )
 
-        result = {
-            'approved': approved,
-            'probability': round(probability, 4),
-            'risk_level': risk_level,
-            'risk_color': risk_colors.get(risk_level, '#FFC107'),
-            'suggestions': suggestions,
-            'financial_health': health
+        top_factors = {
+            'credit_score': round(max(0.0, min(1.0, (850 - data.get('credit_score', 650)) / 550)), 4),
+            'dti_ratio': round(min(1.0, dti_ratio * 2), 4),
+            'loan_amount': round(min(1.0, data.get('loan_amount', 0) / max(data.get('annual_income', 1), 1)), 4),
+            'savings_ratio': round(1.0 - min(1.0, savings_ratio), 4)
         }
 
-        # Save prediction
+        risk_reasons = []
+        if data.get('credit_score', 650) < 650:
+            risk_reasons.append({
+                'factor': 'Credit Score',
+                'severity': 'High',
+                'message': 'Your credit score is below the preferred range.',
+                'suggestion': 'Build credit by paying bills on time and reducing outstanding debt.'
+            })
+        if dti_ratio > 0.4:
+            risk_reasons.append({
+                'factor': 'Debt-to-Income',
+                'severity': 'Moderate',
+                'message': 'Your debt-to-income ratio is higher than recommended.',
+                'suggestion': 'Pay down existing debt and avoid taking new loans.'
+            })
+        if monthly_expenses > monthly_income * 0.8:
+            risk_reasons.append({
+                'factor': 'Expenses',
+                'severity': 'Moderate',
+                'message': 'Your monthly expenses are consuming most of your income.',
+                'suggestion': 'Reduce discretionary expenses and increase savings.'
+            })
+        if not risk_reasons:
+            risk_reasons.append({
+                'factor': 'Financial Stability',
+                'severity': 'Low',
+                'message': 'Your profile looks stable, but keep monitoring your cash flow.',
+                'suggestion': 'Maintain your current habits and build emergency savings.'
+            })
+
+        result = {
+            'ensemble': {
+                'probability': round(probability, 4),
+                'approved': approved,
+                'confidence': 'High' if probability >= 0.75 else 'Medium' if probability >= 0.5 else 'Low',
+                'confidence_score': round(probability, 4)
+            },
+            'models': {
+                'ensemble_model': {
+                    'probability': round(probability, 4),
+                    'approved': approved
+                }
+            },
+            'risk_reasons': risk_reasons,
+            'top_factors': top_factors,
+            'derived_metrics': {
+                'requested_emi': round(requested_emi, 2),
+                'dti_ratio': dti_ratio,
+                'savings_ratio': savings_ratio
+            }
+        }
+
         if user_id:
             pred_data = {**data, **result, 'user_id': user_id}
             pred_id = FirebaseOperations.create(PREDICTIONS_COLLECTION, pred_data)
             result['prediction_id'] = pred_id
 
         return result
+
+    @staticmethod
+    def _calculate_emi(amount: float, interest_rate: float, term: int) -> float:
+        """Calculate requested EMI for a loan amount."""
+        monthly_rate = interest_rate / 100 / 12
+        if monthly_rate > 0 and term > 0:
+            return amount * monthly_rate * (1 + monthly_rate) ** term / ((1 + monthly_rate) ** term - 1)
+        if term > 0:
+            return amount / term
+        return 0.0
 
     @staticmethod
     def _rule_based_predict(data: dict) -> float:
@@ -143,9 +209,36 @@ class LoanService:
     @staticmethod
     def get_history(user_id: str) -> list:
         """Get prediction history for a user."""
-        return FirebaseOperations.query(PREDICTIONS_COLLECTION, "user_id", "==", user_id)
+        history = FirebaseOperations.query(PREDICTIONS_COLLECTION, "user_id", "==", user_id)
+        return [LoanService._format_prediction_record(p) for p in sorted(history, key=lambda x: x.get('created_at', ''), reverse=True)]
+
+    @staticmethod
+    def get_stats(user_id: str) -> dict:
+        """Compute loan statistics for a user."""
+        history = LoanService.get_history(user_id)
+        total = len(history)
+        approved = sum(1 for item in history if item.get('status') == 'approved')
+        latest = history[0] if history else None
+        return {
+            'total_predictions': total,
+            'approved_count': approved,
+            'rejection_count': total - approved,
+            'approval_rate': f"{round((approved / total * 100) if total else 0, 1)}%",
+            'latest_probability': latest.get('probability') if latest else 0.0
+        }
 
     @staticmethod
     def get_all_predictions(limit: int = 100) -> list:
         """Get all predictions (admin)."""
         return FirebaseOperations.get_all(PREDICTIONS_COLLECTION, limit)
+
+    @staticmethod
+    def _format_prediction_record(prediction: dict) -> dict:
+        """Format a prediction record for frontend consumption."""
+        return {
+            'id': prediction.get('id'),
+            'date': prediction.get('created_at', ''),
+            'amount': prediction.get('loan_amount', 0.0),
+            'status': 'approved' if prediction.get('approved') else 'rejected',
+            'probability': round(prediction.get('probability', 0.0), 4)
+        }

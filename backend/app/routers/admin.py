@@ -46,6 +46,28 @@ async def prediction_analytics(admin: dict = Depends(require_admin)):
     }
 
 
+@router.get("/stats")
+async def admin_stats(admin: dict = Depends(require_admin)):
+    """Get admin dashboard statistics."""
+    users = AuthService.get_all_users()
+    predictions = LoanService.get_all_predictions()
+    total = len(predictions)
+    approved = sum(1 for p in predictions if p.get('approved'))
+    total_chats = len(ChatbotService.get_all_logs())
+    model_metrics = RLService.get_metrics()
+
+    return {
+        "success": True,
+        "data": {
+            "total_users": len(users),
+            "total_predictions": total,
+            "approval_rate": round(approved / max(total, 1) * 100, 1),
+            "total_chats": total_chats,
+            "model_accuracy": model_metrics.get('avg_reward_last_100') if isinstance(model_metrics, dict) else None
+        }
+    }
+
+
 @router.get("/chatbot-logs")
 async def chatbot_logs(admin: dict = Depends(require_admin)):
     """Get chatbot conversation logs."""

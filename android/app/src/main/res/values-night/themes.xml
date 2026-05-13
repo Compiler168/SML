@@ -1,24 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Dark Theme -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- =================================================================================
+         CORE APP THEME (Material 3 - Dark Mode)
+         ================================================================================= -->
     <style name="Theme.SmartLoanAI" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="colorPrimary">@color/primary_light</item>
-        <item name="colorPrimaryDark">#0A1929</item>
-        <item name="colorPrimaryVariant">@color/primary</item>
-        <item name="colorSecondary">@color/secondary_light</item>
-        <item name="colorOnPrimary">#0A1929</item>
-        <item name="colorOnSecondary">#0A1929</item>
-        <item name="colorSurface">#1A1A2E</item>
-        <item name="colorError">@color/error</item>
-        <item name="android:windowBackground">#0F0F23</item>
-        <item name="android:statusBarColor">#0A1929</item>
-        <item name="android:navigationBarColor">#1A1A2E</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
+        <!-- Core Colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+
+        <item name="colorError">@color/error_main</item>
+        <item name="colorOnError">@color/black</item>
+
+        <item name="android:windowBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+
+        <!-- Status Bar & Navigation -->
+        <item name="android:statusBarColor">@color/surface</item>
+        <item name="android:navigationBarColor">@color/surface</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+
+        <!-- Typography -->
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.SmartLoan.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.SmartLoan.HeadlineMedium</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.SmartLoan.TitleLarge</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.SmartLoan.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.SmartLoan.BodyMedium</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.SmartLoan.LabelLarge</item>
+
+        <!-- Component Styles -->
+        <item name="materialButtonStyle">@style/Widget.SmartLoan.Button</item>
+        <item name="textInputStyle">@style/Widget.SmartLoan.TextInput</item>
+        <item name="materialCardViewStyle">@style/Widget.SmartLoan.Card</item>
     </style>
 
-    <style name="Theme.SmartLoanAI.Splash" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="android:windowBackground">@color/splash_background</item>
-        <item name="android:statusBarColor">@color/splash_background</item>
-        <item name="android:navigationBarColor">@color/splash_background</item>
+    <style name="Theme.SmartLoanAI.Auth" parent="Theme.SmartLoanAI">
+        <item name="android:statusBarColor">@color/bg_app</item>
     </style>
+
 </resources>

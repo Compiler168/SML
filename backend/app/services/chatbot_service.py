@@ -62,9 +62,18 @@ class ChatbotService:
             "timestamp": resp_timestamp
         })
 
+        suggestions = ChatbotService._extract_suggestions(response_text)
+        intent = "financial_advice"
+        if any(keyword in message.lower() for keyword in ["loan", "borrow", "lending"]):
+            intent = "loan_assistance"
+        elif any(keyword in message.lower() for keyword in ["budget", "save", "expenses"]):
+            intent = "budget_advice"
+
         return {
             "response": response_text,
-            "message_id": msg_id,
+            "intent": intent,
+            "confidence": round(0.85 if settings.GEMINI_API_KEY else 0.75, 2),
+            "suggestions": suggestions,
             "timestamp": resp_timestamp
         }
 
@@ -177,6 +186,20 @@ class ChatbotService:
                 "• Budgeting and savings tips\n"
                 "• Financial planning advice\n\n"
                 "How can I assist you today?")
+
+    @staticmethod
+    def _extract_suggestions(response: str) -> list:
+        """Generate quick suggestion links from the chatbot response."""
+        suggestions = []
+        if 'loan' in response.lower():
+            suggestions.append('Check loan eligibility')
+        if 'emi' in response.lower():
+            suggestions.append('Calculate EMI plan')
+        if 'budget' in response.lower() or 'savings' in response.lower():
+            suggestions.append('Improve budget')
+        if not suggestions:
+            suggestions.append('Ask another financial question')
+        return suggestions
 
     @staticmethod
     def get_history(user_id: str, limit: int = 50) -> list:

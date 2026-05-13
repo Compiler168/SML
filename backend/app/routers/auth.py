@@ -31,6 +31,12 @@ async def signup(user: UserCreate):
     return result
 
 
+@router.post("/register", response_model=None)
+async def register(user: UserCreate):
+    """Register a new user account (frontend-compatible alias)."""
+    return await signup(user)
+
+
 @router.post("/login", response_model=None)
 async def login(user: UserLogin):
     """Authenticate and receive JWT token."""
@@ -38,6 +44,15 @@ async def login(user: UserLogin):
     if "error" in result:
         raise HTTPException(status_code=401, detail=result["error"])
     return result
+
+
+@router.get("/me")
+async def me(current_user: dict = Depends(get_current_user)):
+    """Get current authenticated user information."""
+    result = AuthService.get_profile(current_user["user_id"])
+    if "error" in result:
+        raise HTTPException(status_code=404, detail=result["error"])
+    return {"success": True, "data": result}
 
 
 @router.get("/profile")

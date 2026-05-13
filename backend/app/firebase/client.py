@@ -4,9 +4,17 @@ Smart Loan AI - Firebase Client
 Firebase Admin SDK initialization and Firestore client singleton.
 """
 
-import firebase_admin
-from firebase_admin import credentials, firestore, auth
 import os
+
+try:
+    import firebase_admin
+    from firebase_admin import credentials, firestore, auth
+except Exception as import_error:
+    firebase_admin = None
+    credentials = None
+    firestore = None
+    auth = None
+    print(f"WARNING: Firebase Admin SDK import failed: {import_error}")
 
 _db = None
 _initialized = False
@@ -18,6 +26,11 @@ def initialize_firebase():
 
     if _initialized:
         return _db
+
+    if firebase_admin is None:
+        print("WARNING: Firebase Admin SDK unavailable. Running in mock mode.")
+        _initialized = True
+        return None
 
     cred_path = os.path.join(os.path.dirname(__file__), '..', 'firebase', 'serviceAccountKey.json')
 
@@ -48,4 +61,6 @@ def get_db():
 
 def get_auth():
     """Get Firebase Auth instance."""
+    if auth is None:
+        raise RuntimeError("Firebase auth is not available in mock mode")
     return auth

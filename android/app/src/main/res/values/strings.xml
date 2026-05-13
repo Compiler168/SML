@@ -1,83 +1,240 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Smart Loan AI</string>
-
-    <!-- Onboarding -->
-    <string name="onboarding_title_1">Smart Loan Eligibility</string>
-    <string name="onboarding_desc_1">Get instant AI-powered loan eligibility predictions with personalized suggestions</string>
-    <string name="onboarding_title_2">AI Financial Assistant</string>
-    <string name="onboarding_desc_2">Chat with our intelligent AI about loans, budgeting, savings, and financial planning</string>
-    <string name="onboarding_title_3">Smart Recommendations</string>
-    <string name="onboarding_desc_3">Receive personalized financial advice powered by reinforcement learning</string>
-    <string name="get_started">Get Started</string>
-    <string name="next">Next</string>
-    <string name="skip">Skip</string>
+    <string name="app_name">SmartLoan AI+</string>
+    <string name="app_tagline">Next-Gen Intelligence for Financial Freedom</string>
 
     <!-- Auth -->
-    <string name="login">Login</string>
-    <string name="signup">Sign Up</string>
-    <string name="email">Email</string>
+    <string name="login">Log In</string>
+    <string name="login_label">Login</string>
+    <string name="login_capital">LOGIN</string>
+    <string name="register">Register</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email Address</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="full_name">Full Name</string>
-    <string name="phone">Phone Number</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="remember_me">Remember me</string>
+    <string name="keep_me_signed_in">Keep me signed in</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="welcome_back_title">Welcome Back</string>
+    <string name="welcome_back_subtitle">Securely access your financial world</string>
+    <string name="create_account">Create Account</string>
+    <string name="join_smartloan">Join SmartLoan</string>
+    <string name="start_journey">Start your journey to financial freedom</string>
+    <string name="fill_details">Please fill in your details</string>
+    <string name="or_continue_with">OR CONTINUE WITH</string>
     <string name="dont_have_account">Don\'t have an account? </string>
     <string name="already_have_account">Already have an account? </string>
-    <string name="welcome_back">Welcome Back!</string>
-    <string name="create_account">Create Account</string>
+    <string name="create_one">Create One</string>
+    <string name="no_account">Don\'t have an account? Sign Up</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="terms_agreement">By continuing, you agree to our Terms of Service and Privacy Policy</string>
+    <string name="register_agreement">By clicking Register, you agree to our Terms of Use and Privacy Policy</string>
+
+    <!-- Auth Validation -->
+    <string name="email_required">Email is required</string>
+    <string name="invalid_email">Invalid email address</string>
+    <string name="password_required">Password is required</string>
+    <string name="password_too_short">Password must be at least 6 characters</string>
+    <string name="name_required">Full name is required</string>
+    <string name="phone_required">Phone number is required</string>
+    <string name="passwords_dont_match">Passwords do not match</string>
+    <string name="logging_in">Logging in…</string>
+    <string name="registering">Creating account…</string>
+    <string name="demo_hint">Demo: demo@smartloan.ai / demo123</string>
 
     <!-- Navigation -->
-    <string name="nav_home">Home</string>
-    <string name="nav_loan">Loan Check</string>
-    <string name="nav_chat">AI Chat</string>
-    <string name="nav_budget">Budget</string>
-    <string name="nav_profile">Profile</string>
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_prediction">Prediction</string>
+    <string name="nav_chatbot">AI Chat</string>
+    <string name="nav_analysis">Analysis</string>
+    <string name="nav_simulator">Simulator</string>
+    <string name="nav_reports">Reports</string>
+    <string name="nav_admin">Admin</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_logout">Logout</string>
+    <string name="nav_profile">Settings</string>
 
-    <!-- Loan Form -->
-    <string name="loan_eligibility">Loan Eligibility Check</string>
+    <!-- Dashboard -->
+    <string name="dashboard_title">AI Financial Dashboard</string>
+    <string name="dashboard_subtitle">Your intelligent financial overview</string>
+    <string name="loan_approval">Loan Approval</string>
+    <string name="health_score">Health Score</string>
+    <string name="risk_level">Risk Level</string>
+    <string name="credit_score">Credit Score</string>
+    <string name="monthly_savings">Monthly Savings</string>
+    <string name="dti_ratio">Debt-to-Income</string>
+    <string name="financial_growth">Financial Growth Projection</string>
+    <string name="ai_insights">AI Smart Insights</string>
+    <string name="ai_label">AI</string>
+    <string name="score">Score</string>
+    <string name="income_vs_expenses">Income vs Expenses</string>
+    <string name="income">Income</string>
+    <string name="expenses">Expenses</string>
+    <string name="net_worth">Net Worth</string>
+    <string name="risk_radar">Risk Radar Analysis</string>
+    <string name="recent_activity">Recent Activity</string>
+    <string name="view_all">View All</string>
+
+    <!-- Loan Prediction -->
+    <string name="prediction_title">AI Loan Prediction</string>
+    <string name="prediction_subtitle">ML-powered approval probability</string>
+    <string name="step_personal">Personal Info</string>
+    <string name="step_financial">Financial Details</string>
+    <string name="step_loan">Loan Parameters</string>
+    <string name="predict">Predict</string>
+    <string name="run_prediction">RUN PREDICTION</string>
+    <string name="analyzing">Analyzing…</string>
+    <string name="likely_approved">Likely Approved</string>
+    <string name="likely_rejected">Likely Rejected</string>
+    <string name="model_breakdown">Model Breakdown</string>
+    <string name="risk_factors">Risk Factors</string>
+    <string name="feature_importance">Top Feature Importance</string>
+    <string name="ai_insight_positive">Your savings ratio has increased by 12% this month. You are currently in the top 5% of savers in your demographic.</string>
+    <string name="ai_insight_neutral">We\'ve detected a slight increase in discretionary spending. Consider adjusting your entertainment budget to maintain your current trajectory.</string>
+    <string name="ai_insight_warning">Your Debt-to-Income ratio is approaching 40%. We recommend prioritizing high-interest debt repayment to improve your credit standing.</string>
+    <string name="prediction_success_msg">Analysis Complete: Based on 21 financial variables, your loan application shows a high probability of approval.</string>
+    <string name="prediction_low_prob_msg">Improvement Required: Our AI suggests increasing your savings balance by $2,000 to move into a higher approval bracket.</string>
+
+    <!-- Form Fields -->
     <string name="age">Age</string>
-    <string name="gender">Gender</string>
-    <string name="education">Education</string>
+    <string name="dependents">Dependents</string>
     <string name="employment_status">Employment Status</string>
-    <string name="annual_income">Annual Income ($)</string>
+    <string name="employment_years">Employment Years</string>
+    <string name="monthly_income">Monthly Income ($)</string>
     <string name="monthly_expenses">Monthly Expenses ($)</string>
-    <string name="existing_debts">Existing Debts ($)</string>
+    <string name="credit_score_label">Credit Score (300–850)</string>
+    <string name="existing_loans">Existing Loans</string>
+    <string name="existing_emi">Existing EMI ($)</string>
+    <string name="savings_balance">Savings Balance ($)</string>
     <string name="loan_amount">Loan Amount ($)</string>
     <string name="loan_term">Loan Term (months)</string>
-    <string name="credit_score">Credit Score</string>
-    <string name="check_eligibility">Check Eligibility</string>
-
-    <!-- Results -->
-    <string name="approved">Approved!</string>
-    <string name="rejected">Rejected</string>
-    <string name="approval_probability">Approval Probability</string>
-    <string name="risk_level">Risk Level</string>
-    <string name="suggestions">Improvement Suggestions</string>
-    <string name="financial_health">Financial Health Score</string>
+    <string name="interest_rate">Interest Rate (%)</string>
+    <string name="property_value">Property Value ($)</string>
+    <string name="missed_payments">Missed Payments (last year)</string>
+    <string name="bankruptcies">Bankruptcies</string>
 
     <!-- Chatbot -->
-    <string name="chatbot_title">AI Financial Assistant</string>
-    <string name="type_message">Type your message...</string>
-    <string name="send">Send</string>
+    <string name="chatbot_title">AI Financial Advisor</string>
+    <string name="chatbot_subtitle">NLP-powered financial chatbot</string>
+    <string name="chat_placeholder">Ask about loans, credit, budgets…</string>
+    <string name="chat_welcome">Hello! 👋 I\'m your **SmartLoan AI Financial Advisor**. Ask me anything about loans, credit, budgeting, or financial planning!</string>
 
-    <!-- Budget -->
-    <string name="budget_analysis">Budget Analysis</string>
-    <string name="emi_calculator">EMI Calculator</string>
-    <string name="health_score">Financial Health</string>
-    <string name="interest_rate">Interest Rate (%)</string>
-    <string name="calculate">Calculate</string>
+    <!-- Analysis -->
+    <string name="analysis_title">Financial Analysis</string>
+    <string name="analysis_subtitle">Health scoring &amp; risk assessment</string>
+    <string name="run_health">Health Score</string>
+    <string name="run_risk">Risk Analysis</string>
+    <string name="category_breakdown">Category Breakdown</string>
+    <string name="improvement_roadmap">Improvement Roadmap</string>
+    <string name="risk_dimensions">Risk Dimensions</string>
 
-    <!-- Profile -->
+    <!-- Simulator -->
+    <string name="simulator_title">Financial Simulator</string>
+    <string name="simulator_subtitle">What-if analysis &amp; projections</string>
+    <string name="base_financials">Base Financials</string>
+    <string name="whatif_scenarios">What-If Scenarios</string>
+    <string name="income_change">Income Change (%)</string>
+    <string name="expense_change">Expense Change (%)</string>
+    <string name="new_loan_amount">New Loan Amount ($)</string>
+    <string name="projection_months">Projection (months)</string>
+    <string name="run_simulation">Run Simulation</string>
+    <string name="savings_trajectory">Savings Trajectory</string>
+    <string name="ai_recommendations">AI Recommendations</string>
+
+    <!-- Reports -->
+    <string name="reports_title">Financial Reports</string>
+    <string name="reports_subtitle">Generate &amp; download reports</string>
+    <string name="generate_report">Generate Report</string>
+    <string name="report_history">Report History</string>
+    <string name="financial_summary">Financial Summary</string>
+    <string name="loan_analysis">Loan Analysis</string>
+    <string name="risk_report">Risk Report</string>
+    <string name="ai_recommendations_report">AI Recommendations</string>
+
+    <!-- Admin -->
+    <string name="admin_title">Admin Panel</string>
+    <string name="admin_subtitle">Platform management &amp; analytics</string>
+    <string name="total_users">Total Users</string>
+    <string name="active_sessions">Active Sessions</string>
+    <string name="predictions_today">Predictions Today</string>
+    <string name="system_uptime">System Uptime</string>
+    <string name="user_management">User Management</string>
+    <string name="ml_model_info">ML Model Info</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_subtitle">Account &amp; preferences</string>
     <string name="profile">Profile</string>
-    <string name="logout">Logout</string>
-    <string name="dark_mode">Dark Mode</string>
-    <string name="edit_profile">Edit Profile</string>
-    <string name="save">Save</string>
+    <string name="personal_info">Personal Information</string>
+    <string name="documents">Documents</string>
+    <string name="upload_docs">Upload Documents</string>
+    <string name="report_download">Report Download</string>
+    <string name="download_financial_report">Download Financial Report</string>
+    <string name="security">Security</string>
+    <string name="change_password">Change Password</string>
+    <string name="appearance">Appearance</string>
+    <string name="notifications">Notifications</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="saved">Saved!</string>
+    <string name="theme_light">☀️ Light</string>
+    <string name="theme_dark">🌙 Dark</string>
+    <string name="theme_system">💻 System</string>
 
     <!-- General -->
-    <string name="loading">Loading...</string>
-    <string name="error">Error</string>
+    <string name="loading">Loading…</string>
+    <string name="error_generic">Something went wrong</string>
     <string name="retry">Retry</string>
-    <string name="ok">OK</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
     <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="skip">Skip</string>
+    <string name="welcome">WELCOME</string>
+    <string name="onboarding_welcome">WELCOME TO SMARTLOAN</string>
+    <string name="onboarding_title_1">Precision AI Underwriting</string>
+    <string name="onboarding_desc_1">Experience instant loan eligibility predictions powered by our proprietary ensemble machine learning models with 95% accuracy.</string>
+    <string name="onboarding_title_2">Cognitive Financial Advisor</string>
+    <string name="onboarding_desc_2">Interact with a state-of-the-art NLP engine designed to optimize your debt-to-income ratio and accelerate your path to financial freedom.</string>
+    <string name="onboarding_title_3">Institutional-Grade Security</string>
+    <string name="onboarding_desc_3">Your financial data is encrypted with enterprise-standard AES-256 protocols, ensuring your private information stays private.</string>
+    <string name="get_started">Get Started</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="upload_hint">PDF, JPG or PNG (Max 5MB)</string>
+    <string name="recent_documents">Recent Documents</string>
+    <string name="demo_doc_name">Identity_Proof.pdf</string>
+    <string name="demo_doc_date">Uploaded on Oct 24, 2025</string>
+    <string name="financial_statement">Financial Statement</string>
+    <string name="generate_audit_report">Generate your full AI audit report</string>
+    <string name="change_avatar">Change Avatar</string>
+    <string name="remove_avatar">Remove Avatar</string>
+    <string name="financial_parameters">Financial Parameters</string>
+    <string name="financial_context">Financial Context</string>
+    <string name="income_label">Income ($)</string>
+    <string name="expenses_label">Expenses ($)</string>
+    <string name="savings_label">Current Savings ($)</string>
+    <string name="future_scenario_simulation">Future Scenario Simulation</string>
+    <string name="income_adjustment">Income Adjustment</string>
+    <string name="expense_adjustment">Expense Adjustment</string>
+    <string name="new_loan_label">New Loan ($)</string>
+    <string name="horizon_label">Horizon (Mo)</string>
+    <string name="run_ai_simulation">RUN AI SIMULATION</string>
+    <string name="simulation_intelligence">Simulation Intelligence</string>
+    <string name="ai_health_score_engine">AI HEALTH SCORE ENGINE</string>
+    <string name="excellent">EXCELLENT</string>
+    <string name="stable">STABLE</string>
+    <string name="critical">CRITICAL</string>
+    <string name="analysis_breakdown">Analysis Breakdown</string>
+    <string name="financial_risk_analysis">FINANCIAL RISK ANALYSIS</string>
+    <string name="score_suffix"> / %1$s Score</string>
+    <string name="impact_suffix">%1$s IMPACT • %2$s</string>
+    <string name="projected_savings">Projected Savings</string>
+    <string name="monthly_cash_flow">Monthly Cash Flow</string>
+    <string name="emi_adjustment">EMI Adjustment</string>
+    <string name="dti_impact">DTI Impact</string>
+    <string name="asset_projection">Asset Projection Over Time</string>
+    <string name="strategic_recommendations">Strategic Recommendations</string>
+    <string name="current_path">Current Path</string>
+    <string name="simulated_path">Simulated Path</string>
 </resources>

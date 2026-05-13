@@ -1,79 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- Base Light Theme -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- =================================================================================
+         CORE APP THEME (Material 3)
+         ================================================================================= -->
     <style name="Theme.SmartLoanAI" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Core Colors -->
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
-        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+
         <item name="colorSecondary">@color/secondary</item>
-        <item name="colorSecondaryContainer">@color/secondary_light</item>
-        <item name="colorOnPrimary">@color/text_on_primary</item>
-        <item name="colorOnSecondary">@color/text_on_primary</item>
-        <item name="colorSurface">@color/surface</item>
-        <item name="colorError">@color/error</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
+
+        <item name="colorError">@color/error_main</item>
+        <item name="colorOnError">@color/white</item>
+
         <item name="android:windowBackground">@color/background</item>
-        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/on_surface</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+
+        <!-- Status Bar & Navigation -->
+        <item name="android:statusBarColor">@color/surface</item>
         <item name="android:navigationBarColor">@color/surface</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+
+        <!-- Typography -->
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.SmartLoan.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.SmartLoan.HeadlineMedium</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.SmartLoan.TitleLarge</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.SmartLoan.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.SmartLoan.BodyMedium</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.SmartLoan.LabelLarge</item>
+
+        <!-- Component Styles -->
+        <item name="materialButtonStyle">@style/Widget.SmartLoan.Button</item>
+        <item name="textInputStyle">@style/Widget.SmartLoan.TextInput</item>
+        <item name="materialCardViewStyle">@style/Widget.SmartLoan.Card</item>
+    </style>
+
+    <!-- =================================================================================
+         TYPOGRAPHY SYSTEM
+         ================================================================================= -->
+    <!-- Headline Large (Display) -->
+    <style name="TextAppearance.SmartLoan.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textSize">@dimen/text_display</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textColor">@color/text_high_emphasis</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <!-- Headline Medium (H1) -->
+    <style name="TextAppearance.SmartLoan.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textSize">@dimen/text_h1</item>
         <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/text_high_emphasis</item>
     </style>
 
-    <!-- Splash Theme -->
-    <style name="Theme.SmartLoanAI.Splash" parent="Theme.Material3.Light.NoActionBar">
-        <item name="android:windowBackground">@color/splash_background</item>
-        <item name="android:statusBarColor">@color/splash_background</item>
-        <item name="android:navigationBarColor">@color/splash_background</item>
+    <!-- Title Large (H2) -->
+    <style name="TextAppearance.SmartLoan.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">@dimen/text_h2</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/text_high_emphasis</item>
     </style>
 
-    <!-- Text Styles -->
-    <style name="TextHeadline" parent="TextAppearance.Material3.HeadlineLarge">
-        <item name="android:textColor">@color/text_primary</item>
-        <item name="android:textSize">28sp</item>
-        <item name="android:fontFamily">sans-serif-bold</item>
+    <!-- Body Large -->
+    <style name="TextAppearance.SmartLoan.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textSize">@dimen/text_body_lg</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_medium_emphasis</item>
     </style>
 
-    <style name="TextTitle" parent="TextAppearance.Material3.TitleLarge">
-        <item name="android:textColor">@color/text_primary</item>
-        <item name="android:textSize">22sp</item>
+    <!-- Body Medium -->
+    <style name="TextAppearance.SmartLoan.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">@dimen/text_body_md</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/text_medium_emphasis</item>
     </style>
 
-    <style name="TextSubtitle" parent="TextAppearance.Material3.TitleMedium">
-        <item name="android:textColor">@color/text_secondary</item>
-        <item name="android:textSize">16sp</item>
+    <!-- Label Large (Button Text) -->
+    <style name="TextAppearance.SmartLoan.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:textSize">@dimen/text_body_md</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.02</item>
     </style>
 
-    <style name="TextBody" parent="TextAppearance.Material3.BodyLarge">
-        <item name="android:textColor">@color/text_primary</item>
-        <item name="android:textSize">16sp</item>
+    <!-- =================================================================================
+         LEGACY TEXTSTYLE ALIASES
+         ================================================================================= -->
+    <style name="TextStyle.Heading1" parent="TextAppearance.SmartLoan.HeadlineMedium" />
+    <style name="TextStyle.Heading2" parent="TextAppearance.SmartLoan.TitleLarge" />
+    <style name="TextStyle.Heading3" parent="TextAppearance.SmartLoan.TitleLarge">
+        <item name="android:textSize">@dimen/text_h3</item>
+    </style>
+    <style name="TextStyle.Body" parent="TextAppearance.SmartLoan.BodyLarge" />
+    <style name="TextStyle.Caption" parent="TextAppearance.SmartLoan.BodyMedium">
+        <item name="android:textSize">@dimen/text_body_sm</item>
+        <item name="android:textColor">@color/text_low_emphasis</item>
+    </style>
+    <style name="TextStyle.Label" parent="TextAppearance.SmartLoan.LabelLarge">
+        <item name="android:textSize">@dimen/text_overline</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
-    <!-- Button Styles -->
-    <style name="PrimaryButton" parent="Widget.Material3.Button">
-        <item name="android:textColor">@color/text_on_primary</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="cornerRadius">12dp</item>
-        <item name="android:paddingTop">14dp</item>
-        <item name="android:paddingBottom">14dp</item>
+    <!-- =================================================================================
+         COMPONENT WIDGETS
+         ================================================================================= -->
+    <!-- Primary Button -->
+    <style name="Widget.SmartLoan.Button" parent="Widget.Material3.Button">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.SmartLoan.Button</item>
+        <item name="android:textAppearance">@style/TextAppearance.SmartLoan.LabelLarge</item>
     </style>
 
-    <style name="OutlineButton" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="cornerRadius">12dp</item>
+    <!-- Text Input -->
+    <style name="Widget.SmartLoan.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">@dimen/input_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/input_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/input_radius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/input_radius</item>
+        <item name="boxStrokeColor">@color/input_stroke</item>
+        <item name="boxBackgroundColor">@color/input_bg</item>
+        <item name="hintTextColor">@color/primary</item>
+        <item name="android:textColorHint">@color/text_low_emphasis</item>
     </style>
 
-    <!-- Card Style -->
-    <style name="AppCard" parent="Widget.Material3.CardView.Elevated">
-        <item name="cardCornerRadius">16dp</item>
-        <item name="cardElevation">4dp</item>
-        <item name="cardBackgroundColor">@color/card_background</item>
+    <!-- Elevated Card -->
+    <style name="Widget.SmartLoan.Card" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">@dimen/radius_lg</item>
+        <item name="cardElevation">@dimen/card_elevation_subtle</item>
+        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/border_subtle</item>
     </style>
 
-    <!-- Input Style -->
-    <style name="AppTextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="boxCornerRadiusTopStart">12dp</item>
-        <item name="boxCornerRadiusTopEnd">12dp</item>
-        <item name="boxCornerRadiusBottomStart">12dp</item>
-        <item name="boxCornerRadiusBottomEnd">12dp</item>
+    <style name="ShapeAppearance.SmartLoan.Button" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">@dimen/button_radius</item>
     </style>
+
+    <style name="ShapeAppearance.Circle" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Social Buttons (Legacy Compatibility) -->
+    <style name="Widget.SmartLoan.Button.Social" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">20dp</item>
+        <item name="strokeColor">@color/border_subtle</item>
+        <item name="android:textColor">@color/text_high_emphasis</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="Widget.SmartLoan.Button.SocialIcon" parent="Widget.SmartLoan.Button.Social">
+        <item name="android:padding">0dp</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+
+    <style name="Widget.SmartLoan.Button.Outline" parent="Widget.Material3.Button.OutlinedButton" />
+
 </resources>

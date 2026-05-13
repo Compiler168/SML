@@ -32,13 +32,26 @@ class AuthService:
         if existing:
             return {"error": "Email already registered"}
 
-        # Create user
+        # Create user with a nested profile for the new Android frontend.
         user_data = {
             "name": name,
             "email": email,
             "password": hash_password(password),
             "phone": phone,
-            "role": "user"
+            "role": "user",
+            "profile": {
+                "monthly_income": 0.0,
+                "monthly_expenses": 0.0,
+                "credit_score": 650,
+                "employment_status": "",
+                "employment_years": 0,
+                "existing_loans": 0,
+                "existing_emi": 0.0,
+                "savings_balance": 0.0,
+                "dependents": 0,
+                "age": 18,
+                "property_value": 0.0
+            }
         }
         user_id = FirebaseOperations.create(USERS_COLLECTION, user_data)
 
@@ -46,14 +59,14 @@ class AuthService:
         token = create_token(user_id, email, "user")
 
         return {
-            "access_token": token,
-            "token_type": "bearer",
+            "token": token,
             "user": {
                 "id": user_id,
                 "name": name,
                 "email": email,
-                "phone": phone,
-                "role": "user"
+                "role": "user",
+                "profile": user_data["profile"],
+                "created_at": user_data["created_at"]
             }
         }
 
@@ -71,14 +84,25 @@ class AuthService:
         token = create_token(user["id"], email, user.get("role", "user"))
 
         return {
-            "access_token": token,
-            "token_type": "bearer",
+            "token": token,
             "user": {
                 "id": user["id"],
                 "name": user.get("name", ""),
                 "email": user["email"],
-                "phone": user.get("phone"),
                 "role": user.get("role", "user"),
+                "profile": user.get("profile", {
+                    "monthly_income": 0.0,
+                    "monthly_expenses": 0.0,
+                    "credit_score": 650,
+                    "employment_status": "",
+                    "employment_years": 0,
+                    "existing_loans": 0,
+                    "existing_emi": 0.0,
+                    "savings_balance": 0.0,
+                    "dependents": 0,
+                    "age": 18,
+                    "property_value": 0.0
+                }),
                 "created_at": user.get("created_at")
             }
         }
@@ -90,12 +114,43 @@ class AuthService:
         if not user:
             return {"error": "User not found"}
         user.pop("password", None)
+        user["profile"] = user.get("profile", {
+            "monthly_income": 0.0,
+            "monthly_expenses": 0.0,
+            "credit_score": 650,
+            "employment_status": "",
+            "employment_years": 0,
+            "existing_loans": 0,
+            "existing_emi": 0.0,
+            "savings_balance": 0.0,
+            "dependents": 0,
+            "age": 18,
+            "property_value": 0.0
+        })
         return user
 
     @staticmethod
     def update_profile(user_id: str, data: dict) -> dict:
         """Update user profile."""
-        update_data = {k: v for k, v in data.items() if v is not None and k != "password"}
+        existing = FirebaseOperations.get(USERS_COLLECTION, user_id) or {}
+        profile_updates = data.get("profile") if isinstance(data.get("profile"), dict) else None
+        update_data = {k: v for k, v in data.items() if v is not None and k != "password" and k != "profile"}
+        if profile_updates:
+            current_profile = existing.get("profile", {
+                "monthly_income": 0.0,
+                "monthly_expenses": 0.0,
+                "credit_score": 650,
+                "employment_status": "",
+                "employment_years": 0,
+                "existing_loans": 0,
+                "existing_emi": 0.0,
+                "savings_balance": 0.0,
+                "dependents": 0,
+                "age": 18,
+                "property_value": 0.0
+            })
+            update_data["profile"] = {**current_profile, **profile_updates}
+
         FirebaseOperations.update(USERS_COLLECTION, user_id, update_data)
         return AuthService.get_profile(user_id)
 

@@ -27,6 +27,13 @@ async def get_history(current_user: dict = Depends(get_current_user)):
     return {"success": True, "data": history}
 
 
+@router.get("/stats")
+async def get_stats(current_user: dict = Depends(get_current_user)):
+    """Get loan statistics for current user."""
+    stats = LoanService.get_stats(current_user["user_id"])
+    return {"success": True, "data": stats}
+
+
 @router.get("/suggestions")
 async def get_suggestions(current_user: dict = Depends(get_current_user)):
     """Get improvement suggestions based on latest prediction."""
